@@ -8,8 +8,8 @@ def get_empty_measurements():
         Measurement('tuple', timeit('()')),
         Measurement('list', timeit('[]')),
         Measurement('dict', timeit('{}')),
-        Measurement('frozenset', timeit('frozenset()')),
         Measurement('set', timeit('set()')),
+        Measurement('frozenset', timeit('frozenset()')),
     )
 
 
@@ -20,8 +20,8 @@ def get_one_element_measurements():
         Measurement('tuple', timeit('x += 1; (x,)', setup='x = 0') - int_increment_time),
         Measurement('list', timeit('x += 1; [x]', setup='x = 0') - int_increment_time),
         Measurement('dict', timeit('x += 1; {x: x}', setup='x = 0') - int_increment_time),
-        Measurement('frozenset', timeit('x[0] += 1; frozenset(x)', setup='x = [0]') - int_element_increment_time),
         Measurement('set', timeit('x[0] += 1; set(x)', setup='x = [0]') - int_element_increment_time),
+        Measurement('frozenset', timeit('x[0] += 1; frozenset(x)', setup='x = [0]') - int_element_increment_time),
     )
 
 
