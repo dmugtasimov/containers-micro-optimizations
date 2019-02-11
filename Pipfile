@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 terminaltables = "*"
-pygal = "*"
+markdownpp = "*"
 
 [requires]
 python_version = "3.7.2"

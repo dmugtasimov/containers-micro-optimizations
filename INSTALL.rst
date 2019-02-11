@@ -6,14 +6,14 @@ Development environment
 #. Install prerequisites::
 
     apt update
-    apt install git
+    apt install git pandoc
 
-#. Fork `<https://github.com/dmugtasimov/collections-micro-optimizations>`_ repository
+#. Fork `<https://github.com/dmugtasimov/containers-micro-optimizations>`_ repository
 
 #. Clone forked repository (replace <username> with your github account name)::
 
-    git clone git@github.com:<username>/collections-micro-optimizations.git
-    cd collections-micro-optimizations
+    git clone git@github.com:<username>/containers-micro-optimizations.git
+    cd containers-micro-optimizations
 
 #. Configure git user name and email if you have not done it yet::
 
@@ -31,12 +31,17 @@ Development environment
 
 #. Create virtualenv with all required dependencies::
 
-    pipenv install
+    pipenv install --dev
 
 #. Switch to virtualenv::
 
     pipenv shell
 
-#. Install Collections Micro-optimizations in development mode::
+#. Install Containers Micro-optimizations in development mode::
 
     pip install -e .
+
+#. Build the blopost::
+
+    make
+
