@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 terminaltables = "*"
-markdownpp = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.7.2"

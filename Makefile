@@ -1,4 +1,4 @@
-BUILD_DIR=./blogpost/build
+BUILD_DIR=./_build
 
 .PHONY: build
 build: $(BUILD_DIR) $(BUILD_DIR)/index.md
@@ -8,12 +8,8 @@ build: $(BUILD_DIR) $(BUILD_DIR)/index.md
 clean:
 	rm -rf $(BUILD_DIR)
 
-$(BUILD_DIR)/index.md: $(BUILD_DIR) $(BUILD_DIR)/python-version.txt
-	markdown-pp blogpost/index.mdpp -o $(BUILD_DIR)/index.md
-
-$(BUILD_DIR)/python-version.txt: $(BUILD_DIR)
-	echo '$$ python --version' > $(BUILD_DIR)/python-version.txt
-	python --version >> $(BUILD_DIR)/python-version.txt
+$(BUILD_DIR)/index.md: $(BUILD_DIR)
+	containers-micro-optimizations-generate -b $(BUILD_DIR) -i index.md
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)

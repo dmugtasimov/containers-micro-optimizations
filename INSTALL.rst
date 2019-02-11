@@ -41,7 +41,6 @@ Development environment
 
     pip install -e .
 
-#. Build the blopost::
+#. Build the blogpost::
 
     make
-

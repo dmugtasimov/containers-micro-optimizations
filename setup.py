@@ -9,4 +9,9 @@ setup(
     packages=['containers_micro_optimizations'],
     zip_safe=False,
     include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'containers-micro-optimizations-generate = containers_micro_optimizations.generate:entry',
+        ]
+    }
 )

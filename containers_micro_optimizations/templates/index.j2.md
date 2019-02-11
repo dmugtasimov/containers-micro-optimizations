@@ -1,7 +1,9 @@
 Containers in question: `tuple`, `list`, `dict`, `set`, `frozenset`.
 
 Python version:
-!INCLUDECODE "./blogpost/build/python-version.txt"
+```
+{{ run('python --version') }}
+```
 
 What container is most memory efficient when empty?
 ===================================================
