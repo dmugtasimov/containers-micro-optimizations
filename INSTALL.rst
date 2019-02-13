@@ -6,7 +6,9 @@ Development environment
 #. Install prerequisites::
 
     apt update
-    apt install git pandoc
+    apt install git
+    wget https://github.com/jgm/pandoc/releases/download/2.6/pandoc-2.6-1-amd64.deb
+    sudo dpkg -i pandoc-2.6-1-amd64.deb
 
 #. Fork `<https://github.com/dmugtasimov/containers-micro-optimizations>`_ repository
 

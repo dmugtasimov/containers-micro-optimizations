@@ -9,10 +9,15 @@ BUILD_DIR = './build'
 INDEX_FILE = BUILD_DIR + '/index.md'
 
 
-def run(command):
+def run(command, with_command=False):
+    lines = []
+    if with_command:
+        lines.append(f'$ {command}')
+
     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True,
                                      encoding='utf-8')
-    return f'$ {command}\n{output}'
+    lines.append(output)
+    return '\n'.join(lines)
 
 
 def entry():

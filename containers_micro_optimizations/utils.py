@@ -1,9 +1,17 @@
+import sys
+from io import StringIO
 from collections import namedtuple
 
+import pytablewriter
 from terminaltables import AsciiTable
+from pympler import asizeof
 
 
 Measurement = namedtuple('Measurement', ('name', 'value'))
+
+
+def get_title_lines(title):
+    return title, '-' * len(title)
 
 
 def print_title(title):
@@ -11,6 +19,7 @@ def print_title(title):
     print(title)
     print('=' * len(title))
     print()
+
 
 
 def print_measurements(measurements, title=None):
@@ -48,3 +57,33 @@ def print_transposed_measurements(table_data, title=None):
     print(table.table)
     print('* - best time')
     print()
+
+
+class Spacemeter:
+
+    HEADERS = ('Name', 'Size (sys.getsizeof), bytes', 'Size (pympler.asizeof), bytes')
+
+    def __init__(self):
+        self.measurements = []
+
+    def measure(self, name, instance):
+        self.measurements.append((name, sys.getsizeof(instance), asizeof.asizeof(instance)))
+
+    def table(self):
+        best = min(self.measurements, key=lambda x: x[2])[2]
+
+        lines = []
+
+        writer = pytablewriter.MarkdownTableWriter()
+        writer.stream = StringIO()
+        writer.headers = self.HEADERS
+        writer.value_matrix = list(self.measurements)
+        for index, value in enumerate(writer.value_matrix):
+            if value[2] == best:
+                writer.value_matrix[index] = (value[0] + ' *',) + value[1:]
+
+        writer.write_table()
+
+        lines.extend(writer.stream.getvalue().split('\n'))
+        lines.append('\* - least space')
+        return lines

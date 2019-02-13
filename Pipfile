@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 terminaltables = "*"
 jinja2 = "*"
+pympler = "*"
+pytablewriter = "*"
 
 [requires]
 python_version = "3.7.2"
